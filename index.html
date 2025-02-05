@@ -1,15 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site</title>
-    <link rel="stylesheet" href="css/global.css">
-    <script src="js/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Django Power Full - @setprogramacao</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Configurações iniciais do Tailwind (opcional) -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          // Você pode customizar as cores para que fiquem de acordo com Python e Django
+          colors: {
+            primary: '#306998', // azul python
+            secondary: '#092E20', // tom mais escuro
+            django: '#092E20'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Caso queira usar o scroll suave via CSS */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
-<body>
-    <h1>Ola mundo</h1>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+  <!-- Navbar Fixa -->
+  <header class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 shadow z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <a href="#" class="text-2xl font-bold text-primary dark:text-django">@setprogramacao</a>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#hero" class="hover:text-primary dark:hover:text-django">Home</a>
+        <a href="#o-que-vai-aprender" class="hover:text-primary dark:hover:text-django">O que vais aprender</a>
+        <a href="#curso-para-voce" class="hover:text-primary dark:hover:text-django">Curso para você</a>
+        <a href="#modulos" class="hover:text-primary dark:hover:text-django">Módulos</a>
+        <a href="#projetos" class="hover:text-primary dark:hover:text-django">Projetos</a>
+        <a href="#beneficios" class="hover:text-primary dark:hover:text-django">Benefícios</a>
+        <a href="#planos" class="hover:text-primary dark:hover:text-django">Planos</a>
+        <a href="#faq" class="hover:text-primary dark:hover:text-django">FAQ</a>
+        <a href="#sobre" class="hover:text-primary dark:hover:text-django">Sobre</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <!-- Botão para inscrição -->
+        <a href="#planos" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500 transition">Inscreva-se</a>
+        <!-- Botão para contato via WhatsApp (insira o número desejado) -->
+        <a href="https://wa.me/5511999999999" target="_blank" class="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-500 transition">WhatsApp</a>
+        <!-- Botão para alternar modo claro/escuro -->
+        <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-700 rounded">
+          <!-- Ícones: o que estiver "hidden" será mostrado de acordo com o tema -->
+          <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 0010.586 10.586z"></path>
+          </svg>
+          <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.22a1 1 0 011.415 1.415l-1.414 1.414a1 1 0 11-1.415-1.414l1.414-1.415zM18 9a1 1 0 110 2h-2a1 1 0 110-2h2zM14.22 14.22a1 1 0 00-1.415 1.415l1.414 1.414a1 1 0 001.415-1.414l-1.414-1.415zM10 14a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm-4.22.22a1 1 0 00-1.415-1.415L3 14.22a1 1 0 101.414 1.415l1.366-1.414zM4 9a1 1 0 100 2H2a1 1 0 100-2h2zm1.78-4.78A1 1 0 005.364 5.636L3.95 7.05A1 1 0 105.364 8.464l1.414-1.414z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-    <button id="btn">Clique em mim</button>
+  <!-- Conteúdo Principal com margem para compensar a navbar fixa -->
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section id="hero" class="bg-gradient-to-r from-blue-500 to-green-500 dark:from-blue-700 dark:to-green-700 text-white py-20">
+      <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
+        <div class="w-full md:w-1/2">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Django Power Full</h1>
+          <p class="text-lg md:text-xl mb-6">Transforme sua carreira com nosso curso avançado de Python e Django.</p>
+          <a href="#planos" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded hover:bg-gray-200 transition duration-300">Inscreva-se Agora</a>
+        </div>
+        <div class="w-full md:w-1/2 mb-6 md:mb-0">
+          <img src="https://source.unsplash.com/600x400/?coding,python" alt="Imagem de Programação" class="rounded shadow-lg">
+        </div>
+      </div>
+    </section>
+
+    <!-- O que vais aprender -->
+    <section id="o-que-vai-aprender" class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">O que vais aprender</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Item 1 -->
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Python Avançado</h3>
+            <p>Domine técnicas avançadas e explore a linguagem de forma profunda.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Django Profissional</h3>
+            <p>Construa aplicações web robustas e escaláveis com Django.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Ferramentas Modernas</h3>
+            <p>Aprenda a integrar APIs e utilizar bibliotecas modernas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curso é para você? -->
+    <section id="curso-para-voce" class="py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">O curso é para você?</h2>
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2">
+            <img src="https://source.unsplash.com/500x400/?student,programming" alt="Estudante Programando" class="rounded shadow-lg">
+          </div>
+          <div class="md:w-1/2 md:pl-10 mt-8 md:mt-0">
+            <p class="mb-4 text-lg">
+              Se você é apaixonado por tecnologia e deseja elevar suas habilidades, este curso é perfeito para você! Do iniciante ao avançado, abordamos todos os níveis para transformar sua carreira.
+            </p>
+            <ul class="list-disc list-inside">
+              <li>Iniciantes em busca de novos desafios</li>
+              <li>Profissionais que desejam se atualizar</li>
+              <li>Entusiastas de tecnologia e inovação</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulos das Aulas -->
+    <section id="modulos" class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Módulos das Aulas</h2>
+        <div class="space-y-4">
+          <!-- Módulo 1 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center module-toggle" data-target="module1">
+              <span class="font-semibold text-xl">Módulo 1: Fundamentos de Python</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="module1" class="mt-4 hidden">
+              <ul class="list-disc list-inside">
+                <li>Variáveis e Tipos de Dados</li>
+                <li>Estruturas de Controle</li>
+                <li>Funções e Módulos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Módulo 2 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center module-toggle" data-target="module2">
+              <span class="font-semibold text-xl">Módulo 2: Desenvolvimento Web com Django</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="module2" class="mt-4 hidden">
+              <ul class="list-disc list-inside">
+                <li>Introdução ao Django</li>
+                <li>Modelos, Views e Templates</li>
+                <li>Autenticação e Autorização</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Módulo 3 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center module-toggle" data-target="module3">
+              <span class="font-semibold text-xl">Módulo 3: Projeto Final</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="module3" class="mt-4 hidden">
+              <ul class="list-disc list-inside">
+                <li>Desenvolvimento de um projeto completo</li>
+                <li>Integração com APIs</li>
+                <li>Deploy e Escalabilidade</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos que vamos desenvolver -->
+    <section id="projetos" class="py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Projetos que vamos desenvolver</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Projeto 1 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6">
+            <img src="https://source.unsplash.com/400x300/?web,app" alt="Projeto 1" class="rounded mb-4">
+            <h3 class="text-xl font-semibold mb-2">Sistema de Gestão Empresarial</h3>
+            <p>Desenvolva um sistema completo para gerenciamento de processos empresariais.</p>
+          </div>
+          <!-- Projeto 2 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6">
+            <img src="https://source.unsplash.com/400x300/?ecommerce,web" alt="Projeto 2" class="rounded mb-4">
+            <h3 class="text-xl font-semibold mb-2">Plataforma de E-commerce</h3>
+            <p>Crie uma loja virtual robusta com recursos modernos e segurança avançada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motivos para se inscrever -->
+    <section id="beneficios" class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Motivos para se inscrever</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Comunidade Engajada</h3>
+            <p>Participe de uma comunidade vibrante e colaborativa.</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Suporte Especializado</h3>
+            <p>Receba suporte direto de profissionais experientes.</p>
+          </div>
+          <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
+            <h3 class="text-xl font-semibold mb-2">Certificação Exclusiva</h3>
+            <p>Ganhe um certificado de conclusão reconhecido no mercado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards de Pagamento -->
+    <section id="planos" class="py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Planos e Assinaturas</h2>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+          <!-- Card Anual -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 w-full md:w-1/3">
+            <h3 class="text-2xl font-bold mb-4">Assinatura Anual</h3>
+            <p class="text-4xl font-bold mb-4">R$ 1.200</p>
+            <ul class="mb-6 space-y-2">
+              <li>Conteúdo atualizado</li>
+              <li>Suporte exclusivo</li>
+              <li>Acesso à comunidade</li>
+            </ul>
+            <a href="#inscricao" class="block text-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500">Assinar Agora</a>
+          </div>
+          <!-- Card Vitalício -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 w-full md:w-1/3">
+            <h3 class="text-2xl font-bold mb-4">Assinatura Vitalícia</h3>
+            <p class="text-4xl font-bold mb-4">R$ 3.500</p>
+            <ul class="mb-6 space-y-2">
+              <li>Acesso vitalício</li>
+              <li>Conteúdo premium</li>
+              <li>Atualizações futuras</li>
+            </ul>
+            <a href="#inscricao" class="block text-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500">Assinar Agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas Frequentes -->
+    <section id="faq" class="py-16 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center faq-toggle" data-target="faq1">
+              <span class="font-semibold">Qual a duração do curso?</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="faq1" class="mt-2 hidden">
+              <p>O curso possui duração aproximada de 6 meses com carga horária total de 120 horas.</p>
+            </div>
+          </div>
+          <!-- FAQ 2 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center faq-toggle" data-target="faq2">
+              <span class="font-semibold">Há suporte durante o curso?</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="faq2" class="mt-2 hidden">
+              <p>Sim, você terá acesso a um suporte especializado via nossa plataforma e grupo exclusivo.</p>
+            </div>
+          </div>
+          <!-- FAQ 3 -->
+          <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-4">
+            <button class="w-full text-left flex justify-between items-center faq-toggle" data-target="faq3">
+              <span class="font-semibold">Posso acessar o curso de qualquer dispositivo?</span>
+              <svg class="w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="faq3" class="mt-2 hidden">
+              <p>Sim, o curso é 100% responsivo e acessível de desktops, tablets e smartphones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre o Vendedor -->
+    <section id="sobre" class="py-16">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+        <div class="w-full md:w-1/3">
+          <img src="https://source.unsplash.com/300x300/?person,developer" alt="Foto do Vendedor" class="rounded-full shadow-lg">
+        </div>
+        <div class="w-full md:w-2/3 md:pl-10 mt-8 md:mt-0">
+          <h2 class="text-3xl font-bold mb-4">Sobre o Vendedor</h2>
+          <p class="text-lg">
+            Olá, eu sou um desenvolvedor apaixonado por tecnologia e ensino. Com anos de experiência em Python e Django, criei este curso para compartilhar conhecimento e ajudar profissionais a alcançarem o sucesso na área.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="bg-gray-800 text-gray-200 py-8">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p>&copy; 2025 @setprogramacao. Todos os direitos reservados.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="hover:text-white">Política de Privacidade</a>
+          <a href="#" class="hover:text-white">Termos de Uso</a>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <p>Contato: <a href="mailto:contato@setprogramacao.com" class="hover:text-white">contato@setprogramacao.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript para interatividade -->
+  <script>
+    // Alternância de modo claro/escuro
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Verifica o tema armazenado ou a preferência do sistema
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+      } else {
+        localStorage.setItem('theme', 'light');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+      }
+    });
+
+    // Funcionalidade de Accordion para módulos e FAQ
+    document.querySelectorAll('.module-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.getAttribute('data-target'));
+        target.classList.toggle('hidden');
+        button.querySelector('svg').classList.toggle('rotate-180');
+      });
+    });
+
+    document.querySelectorAll('.faq-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.getAttribute('data-target'));
+        target.classList.toggle('hidden');
+        button.querySelector('svg').classList.toggle('rotate-180');
+      });
+    });
+
+    // Se desejar, pode ativar o smooth scroll via JavaScript (opcional, pois já usamos scroll-behavior)
+    // document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    //   anchor.addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     document.querySelector(this.getAttribute('href')).scrollIntoView({
+    //       behavior: 'smooth'
+    //     });
+    //   });
+    // });
+  </script>
 </body>
 </html>
+
